@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const Navmenu = () => {
     const [isDarkMode, setIsDarkMode] = useState(() => false);
     return (
-        <div>
+        <div className="container mx-auto">
             <Navbar fluid={true} rounded={true}>
                 <NavLink to="/">
                     <Navbar.Brand>
@@ -21,26 +21,30 @@ const Navmenu = () => {
                     </Navbar.Brand>
                 </NavLink>
                 <div className="flex md:order-2 mt-1 md:mt-0 items-center">
-                    <div className='flex mr-2'>
+                    <div className='mr-2 flex'>
                         <DarkModeToggle
                             onChange={setIsDarkMode}
                             checked={isDarkMode}
                             size={42}
                         />
                     </div>
-                    <div>
-                        <div className='flex hidden'>
-                            <Button.Group>
-                                <Button color="gray">
+                    <div className='hidden md:flex'>
+                        <Button.Group>
+                            <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-1' : 'hover:text-cyan-800 mr-1'}>
+                                <Button className='border' color="blue">
                                     Login
                                 </Button>
-                                <Button color="gray">
-                                    Signin
+                            </NavLink>
+                            <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-2' : 'hover:text-cyan-800 mr-2'}>
+                                <Button className='border' color="blue">
+                                    Signup
                                 </Button>
-                            </Button.Group>
-                        </div>
+                            </NavLink>
+                        </Button.Group>
+                    </div>
+                    <div>
                         <div className='flex'>
-                            <div className='mr-2'>
+                            <div className='mr-2 hidden'>
                                 <Dropdown
                                     arrowIcon={false}
                                     inline={true}
@@ -58,9 +62,23 @@ const Navmenu = () => {
                                     </Dropdown.Item>
                                 </Dropdown>
                             </div>
-                            <Navbar.Toggle />
+                            <Navbar.Toggle className='border' />
                         </div>
                     </div>
+                </div>
+                <div className='flex md:hidden mx-auto mt-3'>
+                    <Button.Group>
+                        <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-1' : 'hover:text-cyan-800 mr-1'}>
+                            <Button className='border' color="blue">
+                                Login
+                            </Button>
+                        </NavLink>
+                        <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-2' : 'hover:text-cyan-800 mr-2'}>
+                            <Button className='border' color="blue">
+                                Signup
+                            </Button>
+                        </NavLink>
+                    </Button.Group>
                 </div>
                 <Navbar.Collapse>
                     <Navbar.Link>

@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './Layout/Main';
 import Courses from './Pages/Courses/Courses';
 import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
+import Signup from './Pages/Signup/Signup';
 
 function App() {
   const router = createBrowserRouter([
@@ -24,6 +26,14 @@ function App() {
           element: <Courses></Courses>
         },
         {
+          path: "/login",
+          element: <Login></Login>
+        },
+        {
+          path: "/signup",
+          element: <Signup></Signup>
+        },
+        {
           path: "*",
           element: <div>not found</div>
         }
@@ -31,7 +41,7 @@ function App() {
     }
   ])
   return (
-    <div className="container mx-auto">
+    <div>
       <RouterProvider router={router} />
     </div>
   );
