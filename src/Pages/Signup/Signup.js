@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/Authprovider/Authprovider';
 
 const Signup = () => {
@@ -11,8 +12,18 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('Successfully Sign In!')
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                const onlyErrMsg = error.message.slice(22, error.message.length - 2);
+                const processErrMsg = onlyErrMsg.split('-');
+                for (let i = 0; i < processErrMsg.length; i++) {
+                    processErrMsg[i] = processErrMsg[i].charAt(0).toUpperCase() + processErrMsg[i].slice(1);
+
+                }
+                const finalMsg = processErrMsg.join(" ");
+                toast.error(finalMsg);
+            });
     }
     return (
         <div>
