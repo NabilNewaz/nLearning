@@ -46,7 +46,7 @@ const Login = () => {
                 </form>
                 <div>
                     <hr className='border mt-5'></hr>
-                    <p className='text-1xl font-semibold text-center mt-2'>OR Login With</p>
+                    <p className='text-1xl font-semibold text-center mt-2 dark:text-gray-300'>OR Login With</p>
                     <hr className='border mt-2'></hr>
                 </div>
                 <div>

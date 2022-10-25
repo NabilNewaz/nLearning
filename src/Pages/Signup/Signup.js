@@ -99,7 +99,7 @@ const Signup = () => {
                     </form>
                     <div>
                         <hr className='border mt-5'></hr>
-                        <p className='text-1xl font-semibold text-center mt-2'>OR Signup With</p>
+                        <p className='text-1xl font-semibold text-center mt-2 dark:text-gray-300'>OR Signup With</p>
                         <hr className='border mt-2'></hr>
                     </div>
                     <div>

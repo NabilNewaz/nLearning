@@ -1,10 +1,8 @@
-import { Avatar, Button, Dropdown, Navbar } from 'flowbite-react';
-import DarkModeToggle from "react-dark-mode-toggle";
-import React, { useState } from 'react';
+import { Avatar, Button, DarkThemeToggle, Dropdown, Flowbite, Navbar } from 'flowbite-react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navmenu = () => {
-    const [isDarkMode, setIsDarkMode] = useState(() => false);
     return (
         <div className="container mx-auto">
             <Navbar fluid={true} rounded={true}>
@@ -22,22 +20,20 @@ const Navmenu = () => {
                 </NavLink>
                 <div className="flex md:order-2 mt-1 md:mt-0 items-center">
                     <div className='mr-2 flex'>
-                        <DarkModeToggle
-                            onChange={setIsDarkMode}
-                            checked={isDarkMode}
-                            size={42}
-                        />
+                        <Flowbite >
+                            <DarkThemeToggle className='border' />
+                        </Flowbite>
                     </div>
                     <div className='hidden md:flex'>
                         <Button.Group>
                             <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-1' : 'hover:text-cyan-800 mr-1'}>
                                 <Button className='border' color="blue">
-                                    Login
+                                    <span className='dark:text-white'>Login</span>
                                 </Button>
                             </NavLink>
                             <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-2' : 'hover:text-cyan-800 mr-2'}>
                                 <Button className='border' color="blue">
-                                    Signup
+                                    <span className='dark:text-white'>Signup</span>
                                 </Button>
                             </NavLink>
                         </Button.Group>
@@ -70,12 +66,13 @@ const Navmenu = () => {
                     <Button.Group>
                         <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-1' : 'hover:text-cyan-800 mr-1'}>
                             <Button className='border' color="blue">
-                                Login
+                                <span className='dark:text-white'>Login</span>
                             </Button>
                         </NavLink>
                         <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-2' : 'hover:text-cyan-800 mr-2'}>
                             <Button className='border' color="blue">
-                                Signup
+                                <span className='dark:text-white'>Signup</span>
+
                             </Button>
                         </NavLink>
                     </Button.Group>

@@ -14,7 +14,7 @@ const CourseViewCard = ({ course }) => {
                         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                             {course_name}
                         </h5>
-                        <p className='mt-2 text-sm'>
+                        <p className='mt-2 text-sm dark:text-white'>
                             <span className='font-semibold'>Skills you'll gain: </span>{course_skills.slice(0, 70)}...
                         </p>
                     </Link>
@@ -63,7 +63,7 @@ const CourseViewCard = ({ course }) => {
                             <span className='text-3xl font-extrabold mr-1'>৳</span>{course_price}
                         </span>
                         <Link to={`/course/${course_id}`}
-                            className="rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            className="rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-cyan-600 dark:hover:bg-cyan-800 dark:focus:ring-blue-800">
                             View Details
                         </Link>
                     </div>
