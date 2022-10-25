@@ -1,7 +1,12 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faGithub, faInstagram, faTwitch, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Footer } from 'flowbite-react';
 import React from 'react';
 
 const FooterContent = () => {
+    const openInNewTab = url => {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    };
     return (
         <div className='container mx-auto md:px-5'>
             <Footer container={true}>
@@ -59,26 +64,11 @@ const FooterContent = () => {
                             year={new Date().getFullYear()}
                         />
                         <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-                            <Footer.Icon
-                                href="#"
-                                icon={"BsFacebook"}
-                            />
-                            <Footer.Icon
-                                href="#"
-                                icon={"BsInstagram"}
-                            />
-                            <Footer.Icon
-                                href="#"
-                                icon={"BsTwitter"}
-                            />
-                            <Footer.Icon
-                                href="#"
-                                icon={"BsGithub"}
-                            />
-                            <Footer.Icon
-                                href="#"
-                                icon={"BsDribbble"}
-                            />
+                            <button onClick={() => openInNewTab('https://facebook.com')}><FontAwesomeIcon className='text-xl text-gray-500 dark:hover:text-white' icon={faFacebook} /></button>
+                            <button onClick={() => openInNewTab('https://www.instagram.com')}><FontAwesomeIcon className='text-xl text-gray-500 dark:hover:text-white' icon={faInstagram} /></button>
+                            <button onClick={() => openInNewTab('https://twitter.com')}><FontAwesomeIcon className='text-xl text-gray-500 dark:hover:text-white' icon={faTwitter} /></button>
+                            <button onClick={() => openInNewTab('https://github.com')}><FontAwesomeIcon className='text-xl text-gray-500 dark:hover:text-white' icon={faGithub} /></button>
+                            <button onClick={() => openInNewTab('https://www.twitch.tv')}><FontAwesomeIcon className='text-xl text-gray-500 dark:hover:text-white' icon={faTwitch} /></button>
                         </div>
                     </div>
                 </div>

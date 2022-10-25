@@ -63,7 +63,7 @@ const CourseViewCard = ({ course }) => {
                             <span className='text-3xl font-extrabold mr-1'>৳</span>{course_price}
                         </span>
                         <Link to={`/course/${course_id}`}
-                            className="rounded-lg bg-cyan-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-cyan-600 dark:hover:bg-cyan-800 dark:focus:ring-blue-800">
+                            className="rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-800 dark:focus:ring-blue-800">
                             View Details
                         </Link>
                     </div>

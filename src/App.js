@@ -3,6 +3,7 @@ import Main from './Layout/Main';
 import Courses from './Pages/Courses/Courses';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
+import Notfound from './Pages/Notfound/Notfound';
 import Signup from './Pages/Signup/Signup';
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
         },
         {
           path: "*",
-          element: <div>not found</div>
+          element: <Notfound></Notfound>
         }
       ]
     }

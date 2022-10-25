@@ -26,12 +26,12 @@ const Navmenu = () => {
                     </div>
                     <div className='hidden md:flex'>
                         <Button.Group>
-                            <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-1' : 'hover:text-cyan-800 mr-1'}>
+                            <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-blue-600 rounded-lg mr-1' : 'hover:text-blue-800 mr-1'}>
                                 <Button className='border' color="blue">
                                     <span className='dark:text-white'>Login</span>
                                 </Button>
                             </NavLink>
-                            <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-2' : 'hover:text-cyan-800 mr-2'}>
+                            <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-blue-600 rounded-lg mr-2' : 'hover:text-blue-800 mr-2'}>
                                 <Button className='border' color="blue">
                                     <span className='dark:text-white'>Signup</span>
                                 </Button>
@@ -64,12 +64,12 @@ const Navmenu = () => {
                 </div>
                 <div className='flex md:hidden mx-auto mt-3'>
                     <Button.Group>
-                        <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-1' : 'hover:text-cyan-800 mr-1'}>
+                        <NavLink to="/login" className={({ isActive }) => isActive ? 'text-white font-bold bg-blue-600 rounded-lg mr-1' : 'hover:text-blue-800 mr-1'}>
                             <Button className='border' color="blue">
                                 <span className='dark:text-white'>Login</span>
                             </Button>
                         </NavLink>
-                        <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-cyan-600 rounded-lg mr-2' : 'hover:text-cyan-800 mr-2'}>
+                        <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-white font-bold bg-blue-600 rounded-lg mr-2' : 'hover:text-blue-800 mr-2'}>
                             <Button className='border' color="blue">
                                 <span className='dark:text-white'>Signup</span>
 
@@ -79,22 +79,22 @@ const Navmenu = () => {
                 </div>
                 <Navbar.Collapse>
                     <Navbar.Link>
-                        <NavLink className={({ isActive }) => isActive ? 'text-cyan-600 font-bold' : 'hover:text-cyan-800'} to="/home">
+                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/home">
                             Home
                         </NavLink>
                     </Navbar.Link>
                     <Navbar.Link>
-                        <NavLink className={({ isActive }) => isActive ? 'text-cyan-600 font-bold' : 'hover:text-cyan-800'} to="/courses" >
+                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/courses" >
                             Courses
                         </NavLink>
                     </Navbar.Link>
                     <Navbar.Link>
-                        <NavLink className={({ isActive }) => isActive ? 'text-cyan-600 font-bold' : 'hover:text-cyan-800'} to="/faq" >
+                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/faq" >
                             FAQ
                         </NavLink>
                     </Navbar.Link>
                     <Navbar.Link>
-                        <NavLink className={({ isActive }) => isActive ? 'text-cyan-600 font-bold' : 'hover:text-cyan-800'} to="/blog" >
+                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/blog" >
                             Blog
                         </NavLink>
                     </Navbar.Link>
