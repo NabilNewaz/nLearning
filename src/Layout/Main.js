@@ -1,14 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from '../Pages/Shared/Footer/Footer';
+import FooterContent from '../Pages/FooterContent/FooterContent';
 import Header from '../Pages/Shared/Header/Header';
 
 const Main = () => {
     return (
-        <div>
+        <div className='flex flex-col h-screen justify-between mb-0.5'>
             <Header></Header>
             <Outlet></Outlet>
-            <Footer></Footer>
+            <FooterContent></FooterContent>
         </div>
     );
 };

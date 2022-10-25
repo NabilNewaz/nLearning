@@ -1,4 +1,5 @@
 import React from 'react';
+import Courses from '../Courses/Courses';
 import Headerbanner from './Headerbanner';
 
 const Home = () => {
@@ -7,7 +8,9 @@ const Home = () => {
             <div className="container mx-auto">
                 <Headerbanner></Headerbanner>
             </div>
-            <p>this is home</p>
+            <div>
+                <Courses></Courses>
+            </div>
         </div>
     );
 };

@@ -13,11 +13,12 @@ function App() {
       children: [
         {
           path: "/",
-          // loader: () => fetch('https://openapi.programming-hero.com/api/quiz'),
+          loader: () => fetch('http://localhost:5000/courses'),
           element: <Home></Home>
         },
         {
           path: "/home",
+          loader: () => fetch('http://localhost:5000/courses'),
           element: <Home></Home>
         },
         {

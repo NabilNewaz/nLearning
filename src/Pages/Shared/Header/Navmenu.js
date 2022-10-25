@@ -12,7 +12,7 @@ const Navmenu = () => {
                     <Navbar.Brand>
                         <img
                             src="https://i.ibb.co/hC8wR6Z/Nice-Png-education-icon-png-5042883.png"
-                            className="mr-1 h-6 sm:h-9 mt-1"
+                            className="mr-1 h-10 sm:h-9 mt-1"
                             alt="nLearning"
                         />
                         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">

@@ -7,7 +7,7 @@ const Courses = () => {
     console.log(CoursesTopic)
     return (
         <div className="container mx-auto px-3 md:px-5 mt-2">
-            <div className='grid grid-cols-4 gap-4 w-full'>
+            <div className='grid md:grid-cols-2 lg:grid-cols-4 grid-cols-1 gap-4 w-full mb-5'>
                 {CoursesTopic.map(course => <CourseViewCard key={course.id} course={course}></CourseViewCard>)}
             </div>
         </div>
