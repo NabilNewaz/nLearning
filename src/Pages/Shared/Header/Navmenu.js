@@ -48,13 +48,13 @@ const Navmenu = () => {
                                 <Dropdown
                                     arrowIcon={false}
                                     inline={true}
-                                    label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true} />} >
+                                    label={<Avatar alt="User settings" img={user.photoURL ? user.photoURL : 'defultuser.png'} rounded={true} />} >
                                     <Dropdown.Header>
                                         <span className="block text-sm">
-                                            {user?.displayname}
+                                            {user?.displayName}
                                         </span>
                                         <span className="block truncate text-sm font-medium">
-                                            name@flowbite.com
+                                            {user?.email}
                                         </span>
                                     </Dropdown.Header>
                                     <Dropdown.Item>
