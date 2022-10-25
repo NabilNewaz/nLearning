@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGithub, faInstagram, faTwitch, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Footer } from 'flowbite-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FooterContent = () => {
     const openInNewTab = url => {
@@ -12,13 +13,18 @@ const FooterContent = () => {
             <Footer container={true}>
                 <div className="w-full">
                     <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-                        <div>
-                            <Footer.Brand
-                                href="https://flowbite.com"
-                                src="https://i.ibb.co/hC8wR6Z/Nice-Png-education-icon-png-5042883.png"
-                                alt="nLearning"
-                                name="nLearning"
-                            />
+                        <div className='lg:w-2/6 md:w-1/3 mb-5 md:mb-0'>
+                            <Link to="/">
+                                <Footer.Brand
+                                    href="/"
+                                    src="https://i.ibb.co/hC8wR6Z/Nice-Png-education-icon-png-5042883.png"
+                                    alt="nLearning"
+                                    name="nLearning"
+                                />
+                            </Link>
+                            <p className='mt-3 dark:text-white md:text-justify'>
+                                This is a eLearning WebApp. We provide a quality learning platform in the domains of Computer Science / Information Technology / Programming Languages / Web technology.
+                            </p>
                         </div>
                         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
                             <div>

@@ -1,8 +1,12 @@
 import { Avatar, Button, DarkThemeToggle, Dropdown, Flowbite, Navbar } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/Authprovider/Authprovider';
 
 const Navmenu = () => {
+
+    const { user } = useContext(AuthContext);
+
     return (
         <div className="container mx-auto">
             <Navbar fluid={true} rounded={true}>
@@ -40,14 +44,14 @@ const Navmenu = () => {
                     </div>
                     <div>
                         <div className='flex'>
-                            <div className='mr-2 hidden'>
+                            <div className='mr-2'>
                                 <Dropdown
                                     arrowIcon={false}
                                     inline={true}
                                     label={<Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded={true} />} >
                                     <Dropdown.Header>
                                         <span className="block text-sm">
-                                            Bonnie Green
+                                            {user?.displayname}
                                         </span>
                                         <span className="block truncate text-sm font-medium">
                                             name@flowbite.com
@@ -89,13 +93,13 @@ const Navmenu = () => {
                         </NavLink>
                     </Navbar.Link>
                     <Navbar.Link>
-                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/faq" >
-                            FAQ
+                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/blog" >
+                            Blog
                         </NavLink>
                     </Navbar.Link>
                     <Navbar.Link>
-                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/blog" >
-                            Blog
+                        <NavLink className={({ isActive }) => isActive ? 'text-blue-600 font-bold' : 'hover:text-blue-800'} to="/faq" >
+                            FAQ
                         </NavLink>
                     </Navbar.Link>
                 </Navbar.Collapse>

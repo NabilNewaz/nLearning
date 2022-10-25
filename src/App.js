@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './Layout/Main';
-import Courses from './Pages/Courses/Courses';
+import Coursedetails from './Pages/Coursedetails/Coursedetails';
+import Courses from './Pages/Shared/Courses/Courses';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Notfound from './Pages/Notfound/Notfound';
@@ -34,6 +35,11 @@ function App() {
         {
           path: "/signup",
           element: <Signup></Signup>
+        },
+        {
+          path: "/course/:id",
+          loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+          element: <Coursedetails></Coursedetails>
         },
         {
           path: "*",

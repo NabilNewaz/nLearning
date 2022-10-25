@@ -1,5 +1,5 @@
 import React from 'react';
-import Courses from '../Courses/Courses';
+import Courses from '../Shared/Courses/Courses';
 import Headerbanner from './Headerbanner';
 
 const Home = () => {
