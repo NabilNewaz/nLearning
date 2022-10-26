@@ -1,11 +1,45 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/Authprovider/Authprovider';
 
 const Login = () => {
+    const { providerLogin, signIn, errorMsgToast } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate();
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast.success('Successfully Sign In!')
+                navigate('/');
+            })
+            .catch(error => errorMsgToast(error));
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                toast.success('Successfully Sign In!')
+                navigate('/');
+            })
+            .catch(error => errorMsgToast(error));
+    }
     return (
         <div className="flex justify-center mx-3 py-2">
             <div className="container md:w-1/3">
-                <form className="flex flex-col gap-4">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div>
                         <div className="mb-2 block">
                             <Label
@@ -16,6 +50,7 @@ const Login = () => {
                         <TextInput
                             id="email1"
                             type="email"
+                            name='email'
                             placeholder="name@gmail.com"
                             required={true}
                         />
@@ -29,6 +64,7 @@ const Login = () => {
                         </div>
                         <TextInput
                             id="password1"
+                            name='password'
                             placeholder="Enter Password"
                             type="password"
                             required={true}
@@ -50,7 +86,7 @@ const Login = () => {
                     <hr className='border mt-2'></hr>
                 </div>
                 <div>
-                    <button className='flex justify-center items-center bg-indigo-500 hover:bg-indigo-600 font-semibold text-white p-2 w-full rounded-lg mt-5'>
+                    <button onClick={handleGoogleSignIn} className='flex justify-center items-center bg-indigo-500 hover:bg-indigo-600 font-semibold text-white p-2 w-full rounded-lg mt-5'>
                         <svg className='w-5 mr-2' fill='white' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
                             <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
                         </svg>

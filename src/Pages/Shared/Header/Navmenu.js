@@ -35,18 +35,14 @@ const Navmenu = () => {
                 containerStyle={{}}
                 toastOptions={{
                     // Define default options
-                    className: '',
+                    className: 'bg-white dark:bg-zinc-700 dark:text-white',
                     duration: 5000,
-                    style: {
-                        background: '#363636',
-                        color: '#fff',
-                    },
 
                     // Default options for specific types
                     success: {
                         duration: 5000,
                         theme: {
-                            primary: 'green',
+                            primary: 'white',
                             secondary: 'black',
                         },
                     },

@@ -1,11 +1,13 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Authprovider/Authprovider';
 
 const Signup = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const [checked, setChecked] = useState(false);
+    const { providerLogin, createUser, errorMsgToast } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -14,22 +16,39 @@ const Signup = () => {
                 console.log(user);
                 toast.success('Successfully Sign In!')
             })
-            .catch(error => {
-                const onlyErrMsg = error.message.slice(22, error.message.length - 2);
-                const processErrMsg = onlyErrMsg.split('-');
-                for (let i = 0; i < processErrMsg.length; i++) {
-                    processErrMsg[i] = processErrMsg[i].charAt(0).toUpperCase() + processErrMsg[i].slice(1);
+            .catch(error => errorMsgToast(error));
+    }
 
-                }
-                const finalMsg = processErrMsg.join(" ");
-                toast.error(finalMsg);
-            });
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const fullName = form.fullname.value;
+        const photoUrl = form.photourl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const rePassword = form.repassword.value;
+
+        if (password !== rePassword) {
+            toast.error("Your Password Doesn't Match!")
+        }
+        else {
+            createUser(email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user);
+                    form.reset();
+                    toast.success('Successfully Sign In!')
+                })
+                .catch(error => errorMsgToast(error));
+        }
+
+        console.log(fullName, photoUrl, email, password, checked);
     }
     return (
         <div>
             <div className="flex justify-center mx-3 md:py-16 py-2">
                 <div className="container md:w-1/3">
-                    <form className="flex flex-col gap-4">
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                         <div>
                             <div className="mb-2 block">
                                 <Label
@@ -39,6 +58,7 @@ const Signup = () => {
                             </div>
                             <TextInput
                                 id="fullname1"
+                                name='fullname'
                                 type="text"
                                 placeholder="Enter Full Name"
                                 required={true}
@@ -54,9 +74,10 @@ const Signup = () => {
                             </div>
                             <TextInput
                                 id="photourl1"
+                                name='photourl'
                                 type="text"
                                 placeholder="Enter Your Profile Photo"
-                                required={true}
+                                required={false}
                                 shadow={true}
                             />
                         </div>
@@ -69,6 +90,7 @@ const Signup = () => {
                             </div>
                             <TextInput
                                 id="email2"
+                                name='email'
                                 type="email"
                                 placeholder="name@gmail.com"
                                 required={true}
@@ -84,6 +106,7 @@ const Signup = () => {
                             </div>
                             <TextInput
                                 id="password2"
+                                name='password'
                                 type="password"
                                 placeholder="Enter Password"
                                 required={true}
@@ -100,24 +123,22 @@ const Signup = () => {
                             <TextInput
                                 id="repeat-password"
                                 type="password"
-                                required={true}
+                                name='repassword'
+                                required={false}
                                 shadow={true}
                             />
                         </div>
                         <div className="flex items-center gap-2">
-                            <Checkbox id="agree" />
+                            <Checkbox onChange={() => checked ? setChecked(false) : setChecked(true)} name='agreeterms' type="checkbox" id="agree" />
                             <Label htmlFor="agree">
                                 I agree with the{' '}
-                                <a
-                                    href="/forms"
-                                    className="text-blue-600 hover:underline dark:text-blue-500"
-                                >
+                                <Link to="/" className="text-blue-600 hover:underline dark:text-blue-500">
                                     terms and conditions
-                                </a>
+                                </Link>
                             </Label>
                         </div>
-                        <Button type="submit">
-                            Register new account
+                        <Button className={checked ? 'cursor-pointer disabled' : 'cursor-not-allowed'} disabled={!checked} type="submit">
+                            Register New Account
                         </Button>
                     </form>
                     <div>

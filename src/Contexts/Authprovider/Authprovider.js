@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import app from '../../Firebasae/firebase.config';
+import toast from 'react-hot-toast';
 
 export const AuthContext = createContext();
 const auth = getAuth(app)
@@ -13,8 +14,27 @@ const Authprovider = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
 
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    const signIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
     const logOut = () => {
         return signOut(auth);
+    }
+
+    const errorMsgToast = (error) => {
+        const onlyErrMsg = error.message.slice(22, error.message.length - 2);
+        const processErrMsg = onlyErrMsg.split('-');
+        for (let i = 0; i < processErrMsg.length; i++) {
+            processErrMsg[i] = processErrMsg[i].charAt(0).toUpperCase() + processErrMsg[i].slice(1);
+
+        }
+        const finalMsg = processErrMsg.join(" ");
+        toast.error(finalMsg);
     }
 
     useEffect(() => {
@@ -29,7 +49,7 @@ const Authprovider = ({ children }) => {
 
     }, [])
 
-    const authInfo = { user, providerLogin, logOut };
+    const authInfo = { user, providerLogin, createUser, signIn, logOut, errorMsgToast };
 
     return (
         <AuthContext.Provider value={authInfo}>
