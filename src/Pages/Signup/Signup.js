@@ -132,7 +132,7 @@ const Signup = () => {
                             <Checkbox onChange={() => checked ? setChecked(false) : setChecked(true)} name='agreeterms' type="checkbox" id="agree" />
                             <Label htmlFor="agree">
                                 I agree with the{' '}
-                                <Link to="/" className="text-blue-600 hover:underline dark:text-blue-500">
+                                <Link to="/terms" className="text-blue-600 hover:underline dark:text-blue-500">
                                     terms and conditions
                                 </Link>
                             </Label>

@@ -53,10 +53,10 @@ const FooterContent = () => {
                                 <Footer.Title title="Legal" />
                                 <Footer.LinkGroup col={true}>
                                     <Footer.Link href="#">
-                                        Privacy Policy
+                                        <Link to='/terms'>Privacy Policy</Link>
                                     </Footer.Link>
-                                    <Footer.Link href="#">
-                                        Terms & Conditions
+                                    <Footer.Link>
+                                        <Link to='/terms'>Terms & Conditions</Link>
                                     </Footer.Link>
                                 </Footer.LinkGroup>
                             </div>
