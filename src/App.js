@@ -10,6 +10,7 @@ import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import TermsandCondition from './Pages/TermsandCondition/TermsandCondition';
 import Blog from './Pages/Blog/Blog';
 import Checkout from './Pages/Checkout/Checkout';
+import FqaPage from './Pages/FqaPage/FqaPage';
 
 function App() {
   const router = createBrowserRouter([
@@ -43,6 +44,10 @@ function App() {
         {
           path: "/signup",
           element: <Signup></Signup>
+        },
+        {
+          path: "/faq",
+          element: <FqaPage></FqaPage>
         },
         {
           path: "/terms",
