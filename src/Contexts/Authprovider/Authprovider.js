@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from '../../Firebasae/firebase.config';
 import toast from 'react-hot-toast';
 
@@ -19,6 +19,10 @@ const Authprovider = ({ children }) => {
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile);
     }
 
     const signIn = (email, password) => {
@@ -54,7 +58,16 @@ const Authprovider = ({ children }) => {
 
     }, [])
 
-    const authInfo = { user, providerLogin, createUser, signIn, logOut, loading, errorMsgToast };
+    const authInfo = {
+        user,
+        providerLogin,
+        createUser,
+        signIn,
+        logOut,
+        loading,
+        updateUserProfile,
+        errorMsgToast
+    };
 
     return (
         <AuthContext.Provider value={authInfo}>

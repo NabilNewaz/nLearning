@@ -7,7 +7,7 @@ import { AuthContext } from '../../Contexts/Authprovider/Authprovider';
 
 const Signup = () => {
     const [checked, setChecked] = useState(false);
-    const { providerLogin, createUser, errorMsgToast } = useContext(AuthContext);
+    const { providerLogin, createUser, updateUserProfile, errorMsgToast } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
@@ -37,12 +37,23 @@ const Signup = () => {
                     const user = result.user;
                     console.log(user);
                     form.reset();
+                    handleUpdateUserProfile(fullName, photoUrl);
                     toast.success('Successfully Sign In!')
                 })
                 .catch(error => errorMsgToast(error));
         }
+    }
 
-        console.log(fullName, photoUrl, email, password, checked);
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => {
+                toast.success('Profile Updated!')
+            })
+            .catch(error => errorMsgToast(error));
     }
     return (
         <div>
@@ -69,7 +80,7 @@ const Signup = () => {
                             <div className="mb-2 block">
                                 <Label
                                     htmlFor="photourl1"
-                                    value="Profile Photo"
+                                    value="Profile Photo (Optional)"
                                 />
                             </div>
                             <TextInput
@@ -123,6 +134,7 @@ const Signup = () => {
                             <TextInput
                                 id="repeat-password"
                                 type="password"
+                                placeholder="Re-Enter Password"
                                 name='repassword'
                                 required={false}
                                 shadow={true}
