@@ -92,7 +92,7 @@ const Navmenu = () => {
                                     <Dropdown
                                         arrowIcon={false}
                                         inline={true}
-                                        label={<Avatar alt="User settings" img={user?.photoURL ? user?.photoURL : 'defultuser.png'} rounded={true} />} >
+                                        label={<Avatar alt="User settings" img={user?.photoURL ? user?.photoURL : 'https://i.ibb.co/X2xMzwL/defultuser.png'} rounded={true} />} >
                                         <Dropdown.Header>
                                             <span className="block text-sm">
                                                 {user?.displayName}

@@ -2,13 +2,15 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Authprovider/Authprovider';
 
 const Login = () => {
     const { providerLogin, signIn, errorMsgToast } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
@@ -32,7 +34,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 toast.success('Successfully Sign In!')
-                navigate('/');
+                navigate(from, { replace: true });
             })
             .catch(error => errorMsgToast(error));
     }

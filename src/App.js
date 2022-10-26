@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Notfound from './Pages/Notfound/Notfound';
 import Signup from './Pages/Signup/Signup';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -39,7 +40,7 @@ function App() {
         {
           path: "/course/:id",
           loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
-          element: <Coursedetails></Coursedetails>
+          element: <PrivateRoute><Coursedetails></Coursedetails></PrivateRoute>
         },
         {
           path: "*",
