@@ -13,6 +13,28 @@ const Coursedetails = () => {
     const CourseDetails = useLoaderData();
     const [allCourseDetails, setAllCourseDetails] = useState([]);
 
+    const [isVisible, setIsVisible] = useState(false);
+    const ScrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
+    useEffect(() => {
+        const toggleVisibility = () => {
+            if (window.pageYOffset > 500) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
+
+        window.addEventListener("scroll", toggleVisibility);
+
+        return () => window.removeEventListener("scroll", toggleVisibility);
+    }, [isVisible]);
+
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
 
@@ -34,7 +56,7 @@ const Coursedetails = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/courses`)
+        fetch(`https://b610-lerning-platform-server-side-nabil-newaz.vercel.app/courses`)
             .then((response) => response.json())
             .then((actualData) => setAllCourseDetails(actualData))
             .catch((err) => {
@@ -135,7 +157,7 @@ const Coursedetails = () => {
                             </div>
                         </div>
                         <Link to={`/checkout/${CourseDetails.course_id}`}>
-                            <Button className='w-full'>
+                            <Button onClick={ScrollToTop} className='w-full'>
                                 Get Premium Access
                                 <svg
                                     className="ml-2 -mr-1 h-4 w-4"

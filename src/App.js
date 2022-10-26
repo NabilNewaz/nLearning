@@ -19,17 +19,17 @@ function App() {
       children: [
         {
           path: "/",
-          loader: () => fetch('http://localhost:5000/courses'),
+          loader: () => fetch('https://b610-lerning-platform-server-side-nabil-newaz.vercel.app/courses'),
           element: <Home></Home>
         },
         {
           path: "/home",
-          loader: () => fetch('http://localhost:5000/courses'),
+          loader: () => fetch('https://b610-lerning-platform-server-side-nabil-newaz.vercel.app/courses'),
           element: <Home></Home>
         },
         {
           path: "/courses",
-          loader: () => fetch('http://localhost:5000/courses'),
+          loader: () => fetch('https://b610-lerning-platform-server-side-nabil-newaz.vercel.app/courses'),
           element: <Courses></Courses>
         },
         {
@@ -50,12 +50,12 @@ function App() {
         },
         {
           path: "/checkout/:id",
-          loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+          loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-nabil-newaz.vercel.app/course/${params.id}`),
           element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
         },
         {
           path: "/course/:id",
-          loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+          loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-nabil-newaz.vercel.app/course/${params.id}`),
           element: <Coursedetails></Coursedetails>
         },
         {
