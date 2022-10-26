@@ -8,6 +8,7 @@ import Notfound from './Pages/Notfound/Notfound';
 import Signup from './Pages/Signup/Signup';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import TermsandCondition from './Pages/TermsandCondition/TermsandCondition';
+import Blog from './Pages/Blog/Blog';
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +34,10 @@ function App() {
         {
           path: "/login",
           element: <Login></Login>
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>
         },
         {
           path: "/signup",
