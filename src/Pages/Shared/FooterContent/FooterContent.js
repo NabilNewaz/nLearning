@@ -17,7 +17,7 @@ const FooterContent = () => {
                             <Link to="/">
                                 <Footer.Brand
                                     href="/"
-                                    src="https://i.ibb.co/hC8wR6Z/Nice-Png-education-icon-png-5042883.png"
+                                    src="https://i.postimg.cc/Qds28Bpy/n-Learning.png"
                                     alt="nLearning"
                                     name="nLearning"
                                 />

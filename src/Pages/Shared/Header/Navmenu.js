@@ -52,7 +52,7 @@ const Navmenu = () => {
                 <NavLink to="/">
                     <Navbar.Brand>
                         <img
-                            src="https://i.ibb.co/hC8wR6Z/Nice-Png-education-icon-png-5042883.png"
+                            src="https://i.postimg.cc/Qds28Bpy/n-Learning.png"
                             className="mr-1 h-10 sm:h-9 mt-1"
                             alt="nLearning"
                         />
