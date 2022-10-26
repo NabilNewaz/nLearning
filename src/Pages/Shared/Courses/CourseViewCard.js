@@ -34,7 +34,7 @@ const CourseViewCard = ({ course, adOnStyle }) => {
                     <Card
                         imgAlt={course_name}
                         imgSrc={course_img} >
-                        <Link to={`/course/${course_id}`}>
+                        <Link onClick={ScrollToTop} to={`/course/${course_id}`}>
                             <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                                 {course_name}
                             </h5>

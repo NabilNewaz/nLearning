@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, Rating, Sidebar } from 'flowbite-react';
+import { Avatar, Badge, Button, Card, Rating, Sidebar } from 'flowbite-react';
 import { HiServer } from "react-icons/hi";
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
@@ -6,10 +6,32 @@ import toast from 'react-hot-toast';
 import CourseViewCard from '../Shared/Courses/CourseViewCard';
 import { BsFillPeopleFill } from "react-icons/bs";
 import { FiBookOpen } from "react-icons/fi";
+import { AiOutlineCloudDownload } from "react-icons/ai";
+import ReactToPdf from "react-to-pdf";
 
 const Coursedetails = () => {
     const CourseDetails = useLoaderData();
     const [allCourseDetails, setAllCourseDetails] = useState([]);
+
+    const [width, setWidth] = useState(window.innerWidth);
+    const [height, setHeight] = useState(window.innerHeight);
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+        setHeight(window.innerHeight);
+    }
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+    const ref = React.createRef();
+    const options = {
+        orientation: 'p',
+        unit: 'px',
+        format: [(60 / 100) * width, height]
+    };
 
     const toastMsg = () => {
         toast.success('Successfully Enrolled!');
@@ -25,8 +47,27 @@ const Coursedetails = () => {
     }, []);
     return (
         <div className='container mx-auto px-2 md:px-5 mb-5 mt-2'>
+            <div className='border dark:border-gray-600 rounded-md mb-3 p-3 flex justify-between'>
+                <div className='flex items-center'>
+                    <p className='text-md font-semibold dark:text-gray-300'>Download The Course Details As PDF</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    <div>
+                        <ReactToPdf targetRef={ref} filename={CourseDetails.course_name.concat(".pdf")} options={options} x={20} y={20} scale={0.8}>
+                            {({ toPdf }) => (
+                                <Button onClick={toPdf}
+                                    color="gray"
+                                    pill={true}>
+                                    <AiOutlineCloudDownload className='text-xl mr-1' />
+                                    Download
+                                </Button>
+                            )}
+                        </ReactToPdf>
+                    </div>
+                </div>
+            </div>
             <div className='flex-col flex lg:flex-row'>
-                <div className='w-full mr-5 mb-5 md:mb-0'>
+                <div ref={ref} className='w-full mr-5 mb-5 md:mb-0'>
                     <Card>
                         <img className='object-cover h-80 w-full rounded-lg' src={CourseDetails.course_img} alt="" />
                         <div>
@@ -73,7 +114,7 @@ const Coursedetails = () => {
                             </div>
                             <div className="flex flex-col lg:items-end items-center mt-5 md:mt-12">
                                 <div className="md:mb-2 flex items-center">
-                                    <Rating>
+                                    <Rating className='mr-1'>
                                         <Rating.Star filled={CourseDetails.course_rating < 1 ? false : true} />
                                         <Rating.Star filled={CourseDetails.course_rating < 2 ? false : true} />
                                         <Rating.Star filled={CourseDetails.course_rating < 3 ? false : true} />
@@ -89,6 +130,12 @@ const Coursedetails = () => {
                                         <span className='text-3xl font-extrabold mr-1'>৳</span>{CourseDetails.course_price} BDT
                                     </span>
                                 </p>
+                            </div>
+                        </div>
+                        <div className='border rounded-md p-3 dark:border-gray-600'>
+                            <p className='text-gray-500 dark:text-gray-300 font-semibold mb-2'>SKILLS YOU WILL GAIN</p>
+                            <div className="flex flex-wrap gap-2">
+                                {CourseDetails.skill_gain.map(skill => <Badge className='py-2 px-3'>{skill}</Badge>)}
                             </div>
                         </div>
                         <Button onClick={toastMsg}>
@@ -107,7 +154,7 @@ const Coursedetails = () => {
                         </Button>
                     </Card>
                 </div>
-                <div className="lg:w-2/6 h-screen px-0.5 md:mt-5 lg:mt-0 lg:px-0 drop-shadow-lg border rounded">
+                <div className="lg:w-2/6 h-screen px-0.5 md:mt-5 lg:mt-0 lg:px-0 drop-shadow-lg border dark:border-gray-600 rounded">
                     <Sidebar className='w-full h-full' aria-label="Sidebar with multi-level dropdown example">
                         <Sidebar.Items>
                             <Sidebar.ItemGroup>
@@ -122,8 +169,8 @@ const Coursedetails = () => {
                         </Sidebar.Items>
                     </Sidebar>
                 </div>
-            </div >
-        </div >
+            </div>
+        </div>
     );
 };
 
