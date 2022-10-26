@@ -1,7 +1,7 @@
 import { Avatar, Badge, Button, Card, Rating, Sidebar } from 'flowbite-react';
 import { HiServer } from "react-icons/hi";
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import CourseViewCard from '../Shared/Courses/CourseViewCard';
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -32,10 +32,6 @@ const Coursedetails = () => {
         unit: 'px',
         format: [(60 / 100) * width, height]
     };
-
-    const toastMsg = () => {
-        toast.success('Successfully Enrolled!');
-    }
 
     useEffect(() => {
         fetch(`http://localhost:5000/courses`)
@@ -138,20 +134,22 @@ const Coursedetails = () => {
                                 {CourseDetails.skill_gain.map(skill => <Badge className='py-2 px-3'>{skill}</Badge>)}
                             </div>
                         </div>
-                        <Button onClick={toastMsg}>
-                            Enroll Now
-                            <svg
-                                className="ml-2 -mr-1 h-4 w-4"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    fillRule="evenodd"
-                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-                        </Button>
+                        <Link to={`/checkout/${CourseDetails.course_id}`}>
+                            <Button className='w-full'>
+                                Get Premium Access
+                                <svg
+                                    className="ml-2 -mr-1 h-4 w-4"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </Button>
+                        </Link>
                     </Card>
                 </div>
                 <div className="lg:w-2/6 h-screen px-0.5 md:mt-5 lg:mt-0 lg:px-0 drop-shadow-lg border dark:border-gray-600 rounded">

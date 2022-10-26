@@ -9,6 +9,7 @@ import Signup from './Pages/Signup/Signup';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import TermsandCondition from './Pages/TermsandCondition/TermsandCondition';
 import Blog from './Pages/Blog/Blog';
+import Checkout from './Pages/Checkout/Checkout';
 
 function App() {
   const router = createBrowserRouter([
@@ -48,9 +49,14 @@ function App() {
           element: <TermsandCondition></TermsandCondition>
         },
         {
+          path: "/checkout/:id",
+          loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
+          element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
+        },
+        {
           path: "/course/:id",
           loader: ({ params }) => fetch(`http://localhost:5000/course/${params.id}`),
-          element: <PrivateRoute><Coursedetails></Coursedetails></PrivateRoute>
+          element: <Coursedetails></Coursedetails>
         },
         {
           path: "*",
@@ -60,7 +66,7 @@ function App() {
     }
   ])
   return (
-    <div>
+    <div className='scrollbar-hide'>
       <RouterProvider router={router} />
     </div>
   );
