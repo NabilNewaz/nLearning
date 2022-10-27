@@ -12,6 +12,7 @@ import Blog from './Pages/Blog/Blog';
 import Checkout from './Pages/Checkout/Checkout';
 import FqaPage from './Pages/FqaPage/FqaPage';
 import Profile from './Pages/Profile/Profile';
+import ResetPassword from './Pages/ResetPassword/ResetPassword';
 
 function App() {
   const router = createBrowserRouter([
@@ -53,6 +54,10 @@ function App() {
         {
           path: "/profile",
           element: <PrivateRoute><Profile></Profile></PrivateRoute>
+        },
+        {
+          path: "/resetpassword",
+          element: <PrivateRoute><ResetPassword></ResetPassword></PrivateRoute>
         },
         {
           path: "/terms",

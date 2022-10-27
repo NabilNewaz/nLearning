@@ -103,7 +103,12 @@ const Navmenu = () => {
                                         </Dropdown.Header>
                                         <Link to="/profile">
                                             <Dropdown.Item>
-                                                Profile
+                                                Profile Setting
+                                            </Dropdown.Item>
+                                        </Link>
+                                        <Link to="/resetpassword">
+                                            <Dropdown.Item>
+                                                Reset Password
                                             </Dropdown.Item>
                                         </Link>
                                         <Dropdown.Divider />

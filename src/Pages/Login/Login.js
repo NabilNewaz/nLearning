@@ -15,9 +15,8 @@ const Login = () => {
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+            .then(() => {
+                // const user = result.user;
                 toast.success('Successfully Sign In')
                 navigate(from, { replace: true });
             })
@@ -26,9 +25,8 @@ const Login = () => {
 
     const handleGithubSignIn = () => {
         providerLogin(githubProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+            .then(() => {
+                // const user = result.user;
                 toast.success('Successfully Sign In')
                 navigate(from, { replace: true });
             })
@@ -42,9 +40,8 @@ const Login = () => {
         const password = form.password.value;
 
         signIn(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+            .then(() => {
+                // const user = result.user;
                 form.reset();
                 toast.success('Successfully Sign In')
                 navigate(from, { replace: true });
@@ -59,7 +56,7 @@ const Login = () => {
                         <div className="mb-2 block">
                             <Label
                                 htmlFor="email1"
-                                value="Your email"
+                                value="Your Email"
                             />
                         </div>
                         <TextInput
@@ -74,7 +71,7 @@ const Login = () => {
                         <div className="mb-2 block">
                             <Label
                                 htmlFor="password1"
-                                value="Your password"
+                                value="Your Password"
                             />
                         </div>
                         <TextInput

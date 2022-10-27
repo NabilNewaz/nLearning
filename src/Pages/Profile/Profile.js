@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/Authprovider/Authprovider';
 
 const Profile = () => {
-    const { user, verifyMail, updateUserProfile, errorMsgToast } = useContext(AuthContext);
-    console.log(user)
+    const { user, verifyMail, updateUserProfile, errorMsgToast, setLoading } = useContext(AuthContext);
     const [image, setImage] = useState(null);
 
     const onImageChange = (event) => {
@@ -24,12 +23,17 @@ const Profile = () => {
             displayName: `${fullName ? fullName : user?.displayName}`,
             photoURL: `${photoUrl ? photoUrl : user?.photoURL}`
         }
-        if (profile)
+        if (fullName === "" & photoUrl === "") {
+            toast.error('Input Field Are Empty')
+        }
+        else {
             updateUserProfile(profile)
                 .then(() => {
                     toast.success('Profile Updated')
+                    setLoading(false);
                 })
                 .catch(error => errorMsgToast(error));
+        }
     }
 
     const handleVerifyMail = () => {

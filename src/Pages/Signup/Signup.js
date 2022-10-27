@@ -7,15 +7,13 @@ import { AuthContext } from '../../Contexts/Authprovider/Authprovider';
 
 const Signup = () => {
     const [checked, setChecked] = useState(false);
-    const { providerLogin, createUser, updateUserProfile, errorMsgToast } = useContext(AuthContext);
+    const { providerLogin, createUser, updateUserProfile, errorMsgToast, setLoading } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+            .then(() => {
                 toast.success('Successfully Sign In')
             })
             .catch(error => errorMsgToast(error));
@@ -23,9 +21,7 @@ const Signup = () => {
 
     const handleGithubSignIn = () => {
         providerLogin(githubProvider)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+            .then(() => {
                 toast.success('Successfully Sign In')
             })
             .catch(error => errorMsgToast(error));
@@ -45,12 +41,10 @@ const Signup = () => {
         }
         else {
             createUser(email, password)
-                .then(result => {
-                    const user = result.user;
-                    console.log(user);
+                .then(() => {
                     form.reset();
                     handleUpdateUserProfile(fullName, photoUrl);
-                    toast.success('Successfully Sign In')
+                    toast.success('Successfully Sign In');
                 })
                 .catch(error => errorMsgToast(error));
         }
@@ -63,7 +57,8 @@ const Signup = () => {
         }
         updateUserProfile(profile)
             .then(() => {
-                toast.success('Profile Updated')
+                setLoading(false);
+                toast.success('Profile Updated');
             })
             .catch(error => errorMsgToast(error));
     }
@@ -108,7 +103,7 @@ const Signup = () => {
                             <div className="mb-2 block">
                                 <Label
                                     htmlFor="email2"
-                                    value="Your email"
+                                    value="Your Email"
                                 />
                             </div>
                             <TextInput
@@ -124,7 +119,7 @@ const Signup = () => {
                             <div className="mb-2 block">
                                 <Label
                                     htmlFor="password2"
-                                    value="Your password"
+                                    value="Your Password"
                                 />
                             </div>
                             <TextInput
@@ -140,7 +135,7 @@ const Signup = () => {
                             <div className="mb-2 block">
                                 <Label
                                     htmlFor="repeat-password"
-                                    value="Repeat password"
+                                    value="Repeat Password"
                                 />
                             </div>
                             <TextInput
