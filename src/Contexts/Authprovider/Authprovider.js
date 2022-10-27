@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from '../../Firebasae/firebase.config';
 import toast from 'react-hot-toast';
 
@@ -14,6 +14,10 @@ const Authprovider = ({ children }) => {
     const providerLogin = (provider) => {
         setLoading(true);
         return signInWithPopup(auth, provider);
+    }
+
+    const verifyMail = () => {
+        return sendEmailVerification(auth.currentUser)
     }
 
     const createUser = (email, password) => {
@@ -66,6 +70,7 @@ const Authprovider = ({ children }) => {
         logOut,
         loading,
         updateUserProfile,
+        verifyMail,
         errorMsgToast
     };
 

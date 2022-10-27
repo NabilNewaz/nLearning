@@ -11,6 +11,7 @@ import TermsandCondition from './Pages/TermsandCondition/TermsandCondition';
 import Blog from './Pages/Blog/Blog';
 import Checkout from './Pages/Checkout/Checkout';
 import FqaPage from './Pages/FqaPage/FqaPage';
+import Profile from './Pages/Profile/Profile';
 
 function App() {
   const router = createBrowserRouter([
@@ -48,6 +49,10 @@ function App() {
         {
           path: "/faq",
           element: <FqaPage></FqaPage>
+        },
+        {
+          path: "/profile",
+          element: <PrivateRoute><Profile></Profile></PrivateRoute>
         },
         {
           path: "/terms",

@@ -16,7 +16,7 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Successfully Sign In!')
+                toast.success('Successfully Sign In')
             })
             .catch(error => errorMsgToast(error));
     }
@@ -26,7 +26,7 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Successfully Sign In!')
+                toast.success('Successfully Sign In')
             })
             .catch(error => errorMsgToast(error));
     }
@@ -50,7 +50,7 @@ const Signup = () => {
                     console.log(user);
                     form.reset();
                     handleUpdateUserProfile(fullName, photoUrl);
-                    toast.success('Successfully Sign In!')
+                    toast.success('Successfully Sign In')
                 })
                 .catch(error => errorMsgToast(error));
         }
@@ -63,7 +63,7 @@ const Signup = () => {
         }
         updateUserProfile(profile)
             .then(() => {
-                toast.success('Profile Updated!')
+                toast.success('Profile Updated')
             })
             .catch(error => errorMsgToast(error));
     }

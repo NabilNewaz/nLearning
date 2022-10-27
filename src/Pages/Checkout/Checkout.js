@@ -75,7 +75,7 @@ const Checkout = () => {
                                         rows="4" placeholder="Notes for delivery"></textarea>
                                 </div>
                                 <div className="mt-4">
-                                    <Button onClick={() => handelSucess('Successfully Enrolled!')} className='w-full'>
+                                    <Button onClick={() => handelSucess('Successfully Enrolled')} className='w-full'>
                                         Enroll Now
                                         <svg
                                             className="ml-2 -mr-1 h-4 w-4"

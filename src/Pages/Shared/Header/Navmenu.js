@@ -1,7 +1,7 @@
 import { Avatar, Button, DarkThemeToggle, Dropdown, Flowbite, Navbar } from 'flowbite-react';
 import React, { useContext } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/Authprovider/Authprovider';
 
 const Navmenu = () => {
@@ -11,7 +11,7 @@ const Navmenu = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                toast.success('Successfully Sign Out!');
+                toast.success('Successfully Sign Out');
             })
             .catch(error => {
                 const onlyErrMsg = error.message.slice(22, error.message.length - 2);
@@ -95,12 +95,18 @@ const Navmenu = () => {
                                         label={<Avatar alt="User settings" img={user?.photoURL ? user?.photoURL : 'https://i.ibb.co/X2xMzwL/defultuser.png'} rounded={true} />} >
                                         <Dropdown.Header>
                                             <span className="block text-sm">
-                                                {user?.displayName}
+                                                {user?.displayName ? user.displayName : 'Unnamed User'}
                                             </span>
                                             <span className="block truncate text-sm font-medium">
                                                 {user?.email}
                                             </span>
                                         </Dropdown.Header>
+                                        <Link to="/profile">
+                                            <Dropdown.Item>
+                                                Profile
+                                            </Dropdown.Item>
+                                        </Link>
+                                        <Dropdown.Divider />
                                         <Dropdown.Item>
                                             <button onClick={handleLogOut}>Sign Out</button>
                                         </Dropdown.Item>

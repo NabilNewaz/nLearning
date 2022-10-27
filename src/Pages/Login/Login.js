@@ -18,7 +18,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Successfully Sign In!')
+                toast.success('Successfully Sign In')
                 navigate(from, { replace: true });
             })
             .catch(error => errorMsgToast(error));
@@ -29,7 +29,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Successfully Sign In!')
+                toast.success('Successfully Sign In')
                 navigate(from, { replace: true });
             })
             .catch(error => errorMsgToast(error));
@@ -46,7 +46,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                toast.success('Successfully Sign In!')
+                toast.success('Successfully Sign In')
                 navigate(from, { replace: true });
             })
             .catch(error => errorMsgToast(error));
